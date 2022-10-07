@@ -5,4 +5,4 @@ This script is meant as a replacement of the visualization by the open-source R 
 
 More tools for working with OPERA radar data, and the derived climatological dataset EURADCLIM, can be found here: https://github.com/overeem11/EURADCLIM-tools
 
-
+![](Netherlands.jpg)
