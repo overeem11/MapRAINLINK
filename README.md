@@ -6,7 +6,7 @@ This script is meant as a replacement of the visualization by the open-source R 
 How to start? Just clone this repository. With the default settings, the locations of CML paths and the interpolated CML rainfall estimates are plotted on a map of the Netherlands for one 15-min time interval. This is based on output from RAINLINK, by running the Dutch sample dataset, which is part of RAINLINK. The map is made by running:
 python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py
 
-All the plotting options and input files need to be specified in the configuration file "ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py".
+All the plotting options and input and output files need to be specified in the configuration file "ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py".
 
 Open datasets to use with MapRAINLINK:
 - Gridded rainfall maps retrieved from CML data from Sri Lanka over a 3.5 month period (https://doi.org/10.4121/14166539.v2).
