@@ -3,10 +3,10 @@ Python script to visualize rain gauge, radar, and commercial microwave link (CML
 
 This script is meant as a replacement of the visualization by the open-source R package RAINLINK for Dutch radar data and commercial microwave link data. RAINLINK (https://github.com/overeem11/RAINLINK) is a retrieval algorithm for rainfall mapping from microwave links in a cellular communication network. It works with output data from RAINLINK, irrespective of the RAINLINK version. MapRAINLINK can be of general use for opportunistic sensing data, such as those from CML and personal weather stations (PWS). Note that some Python libraries need to be installed: cartopy, copy, h5py, matplotlib, numpy, os, pandas, pyproj, sys.
 
-How to start? Just clone this repository. With the default settings, the locations of CML paths and the interpolated CML rainfall estimates are plotted on a map of the Netherlands for one 15-min time interval. This is based on output from RAINLINK, by running the Dutch sample dataset, which is part of RAINLINK. The map is made by running:
+How to start? Just clone this repository. With the default settings, the locations of CML paths and the interpolated CML rainfall estimates are plotted on a map of the Netherlands for one 15-min time interval. This is based on output from RAINLINK, by running the Dutch sample dataset, which is part of RAINLINK. The map is made by running using Python version 3:
 python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py
 
-All the plotting options and input and output files need to be specified in the configuration file "ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py".
+All the plotting options and input and output files need to be specified in the configuration file "ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py", although it is also possible to provide additional arguments on the command line, which will overrule the settings in the configuration file. 
 
 Open datasets to use with MapRAINLINK:
 - Gridded rainfall maps retrieved from CML data from Sri Lanka over a 3.5 month period (https://doi.org/10.4121/14166539.v2).
