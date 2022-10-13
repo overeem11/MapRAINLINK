@@ -27,6 +27,7 @@ cond <- which(Rmean>=0)
 dataf <- unique(data.frame(cbind(DataOutlierFiltered$XStart[cond],DataOutlierFiltered$YStart[cond],DataOutlierFiltered$XEnd[cond],DataOutlierFiltered$YEnd[cond])))
 
 write.table(dataf,"CMLLocations_SriLanka_RmeanAvailable_MinMax.dat",row.names=FALSE,col.names=TRUE,quote=FALSE)
+
 4. Start R and run this script to obtain a grid which can be used for plotting with MapRAINLINK: "MakeInterpolationGridForPlottingSriLankaMinMax.R". Output is the file "CMLInterpolationGridSriLanka.dat", which is the same interpolation grid as provided at https://doi.org/10.4121/14166539.v2. If "GridPlottingCML" is set to "yes", the last column in "CMLInterpolationGridSriLanka.dat" is set to 1 if a grid cell is less than 0.05 degrees from the start and/or end coordinates of a CML. Otherwise, the last column is always set to 1. "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" only plots the interpolated CML rainfall for values of 1 in the last column.
 5. Simply follow the above steps for deriving your own interpolation grids for interpolation with RAINLINK and/or visualization with MapRAINLINK.
 
