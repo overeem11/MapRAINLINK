@@ -55,7 +55,7 @@ This produces the file "InterpolationGrid_SriLanka_Plus_Indices.dat", which cont
 # Error message
 It seems that this error message is not a problem:
 
-UserWarning: The input coordinates to pcolormesh are interpreted as cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which case, please supply explicit cell edges to pcolormesh.
+"UserWarning: The input coordinates to pcolormesh are interpreted as cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which case, please supply explicit cell edges to pcolormesh."
 
 # Open datasets to use with MapRAINLINK
 - Gridded rainfall maps retrieved from CML data from Sri Lanka over a 3.5 month period (https://doi.org/10.4121/14166539.v2).
