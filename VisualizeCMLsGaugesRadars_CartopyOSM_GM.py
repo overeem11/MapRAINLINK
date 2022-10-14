@@ -239,13 +239,12 @@ if PlotKNMIRadar=="yes" or PlotDataFieldRadarGrid=="yes":
 
    # Set data below LowestValue in [scale numbers] to "not available":
    if DoColorSetUnder!="yes":
-      print(RArray.dtype)
       RArray[RArray < LowestValue] = np.nan
    if PlotKNMIRadar=="yes" and PlotDataFieldRadarGrid!="yes":
-     # No data & missing data values are made "not available".
-     RArray[RArray == nodata] = np.nan
-     RArray[RArray == missingdata] = np.nan
-     RArray = RArray * ConversionFactorKNMIRadar
+      # No data & missing data values are made "not available".
+      RArray[RArray == nodata] = np.nan
+      RArray[RArray == missingdata] = np.nan
+      RArray = RArray * ConversionFactorKNMIRadar
 
    # Probably this still holds for this script & dataset:
    # https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pcolormesh.html:
