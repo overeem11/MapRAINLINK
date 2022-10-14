@@ -23,10 +23,13 @@ For other regions or interpolation grids, "PlotDataFieldRadarGrid" must be made 
 python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM_SriLanka.py
 ```
 A recipe to obtain an interpolation grid for RAINLINK and one for the plotting with "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" for Sri Lanka is given below:
-1. Start R and run this script to obtain the interpolation grid for Sri Lanka: source("MakeInterpolationGridSriLanka.R").
-2. The output "InterpolationGrid_SriLanka.dat" has to be used by RAINLINK to obtain interpolated rainfall maps (3.5 months of these rainfall maps can be obtained from https://doi.org/10.4121/14166539.v2). Since the CML data are not publicly available, this step cannot be reproduced.
-3. After running RAINLINK, store the following output of RAINLINK in the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat", by pasting this in the R shell (again this step cannot be reproduced and the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat" is not publicly available because of restrictions for the CML metadata):
-
+1. Start R and run this script to obtain the interpolation grid for Sri Lanka:
+```
+source("MakeInterpolationGridSriLanka.R").
+```
+3. The output "InterpolationGrid_SriLanka.dat" has to be used by RAINLINK to obtain interpolated rainfall maps (3.5 months of these rainfall maps can be obtained from https://doi.org/10.4121/14166539.v2). Since the CML data are not publicly available, this step cannot be reproduced.
+4. After running RAINLINK, store the following output of RAINLINK in the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat", by pasting this in the R shell (again this step cannot be reproduced and the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat" is not publicly available because of restrictions for the CML metadata):
+```
 Rmean <- RainRetrievalMinMaxRSL(Aa=Aa,alpha=alpha,Data=DataOutlierFiltered,kRPowerLawDataH=kRPowerLawDataH,kRPowerLawDataV=kRPowerLawDataV,PmaxCor=Pcor$PmaxCor,PminCor=Pcor$PminCor,Pref=Pref)
 
 DataOutlierFiltered <- OutlierFilterMinMaxRSL(Data=DataPreprocessed,F=WetDry$F,FilterThreshold=FilterThreshold)
@@ -36,8 +39,11 @@ cond <- which(Rmean>=0)
 dataf <- unique(data.frame(cbind(DataOutlierFiltered$XStart[cond],DataOutlierFiltered$YStart[cond],DataOutlierFiltered$XEnd[cond],DataOutlierFiltered$YEnd[cond])))
 
 write.table(dataf,"CMLLocations_SriLanka_RmeanAvailable_MinMax.dat",row.names=FALSE,col.names=TRUE,quote=FALSE)
-
-4. Start R and run this script to obtain a grid which can be used for plotting with MapRAINLINK: "MakeInterpolationGridForPlottingSriLankaMinMax.R". Output is the file "CMLInterpolationGridSriLanka.dat", which is the same interpolation grid as provided at https://doi.org/10.4121/14166539.v2. If "GridPlottingCML" is set to "yes", the last column in "CMLInterpolationGridSriLanka.dat" is set to 1 if a grid cell is less than 0.05 degrees from the start and/or end coordinates of a CML. Otherwise, the last column is always set to 1. "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" only plots the interpolated CML rainfall for values of 1 in the last column.
+```
+4. Start R and run this script to obtain a grid which can be used for plotting with MapRAINLINK: 
+``` 
+source("MakeInterpolationGridForPlottingSriLankaMinMax.R")
+Output is the file "CMLInterpolationGridSriLanka.dat", which is the same interpolation grid as provided at https://doi.org/10.4121/14166539.v2. If "GridPlottingCML" is set to "yes", the last column in "CMLInterpolationGridSriLanka.dat" is set to 1 only if a grid cell is less than 0.05 degrees from the start and/or end coordinates of a CML. Otherwise, the last column is always set to 1. "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" only plots the interpolated CML rainfall for values of 1 in the last column.
 5. Simply follow the above steps for deriving your own interpolation grids for interpolation with RAINLINK and/or visualization with MapRAINLINK.
 
 Open datasets to use with MapRAINLINK:
