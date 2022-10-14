@@ -65,9 +65,15 @@ It seems that this error message is not a problem:
 - 24 hour precipitation accumulations from climatological gauge-adjusted radar dataset for The Netherlands (1 km) in KNMI HDF5 format (https://dataplatform.knmi.nl/dataset/rad-nl25-rac-mfbs-24h-2-0). Can be used as a reference for CML rainfall estimates. The file "RAD_NL25_RAC_MFBS_24H_201805300800_NL.h5" contains 24-h accumulations for one interval and can be used for testing.
 
 # Visualizing Dutch KNMI radar data
+Previous versions of RAINLINK could accumulate Dutch gridded radar data. With the Python script "AccumulateRadarHDF5KNMIListCount.py", radar data in KNMI-HDF5 format can be accumulated. The files in a certain directory or a list of provided files can be accumulated. Below is an example of accumulating 3 radar images with 5-min precipitation to 15-min precipitation accumulations using Python version 3:
 ```
 python AccumulateRadarHDF5KNMIListCount.py "RAD_NL25_RAC_MFBS_15min_201109102045_NL.h5" "RAD_NL25_RAC_MFBS_5min_201109102035_NL.h5  RAD_NL25_RAC_MFBS_5min_201109102045_NL.h5 RAD_NL25_RAC_MFBS_5min_201109102040_NL.h5" 1 1 RAD_NL25_RAC_RT_202107141500.h5 files RAD_NL25_RAC_MFBS_15min 0
 ```
+Next, a map of 15-min radar precipitation accumulations can be visualized:
+```
+python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py "PlotDataField = 'no'" "PlotDataFieldRadarGrid = 'no'" "PlotKNMIRadar = 'yes'" "KNMIRadarInputFileName = 'RAD_NL25_RAC_MFBS_15min_201109102045_NL.h5'" "PlotCMLTimeInterval = 'yes'" "TitlePlot = 'The Netherlands - Radar'" "OutputFileName = 'NetherlandsRadar.jpg'"
+```
+<img src="Netherlands.jpg" alt="drawing" width="500"/>
 
 # Visualizing OPERA radar data
 MapRAINLINK can also visualize gridded OPERA radar data in HDF5-ODIM format. Then the file "CoordinatesHDF5ODIMWGS84.dat" is needed. It contains the coordinates of the center of radar grid cells with longitude (first column) and latitude (second column) in degrees (WGS84). More tools for working with OPERA radar data, and the derived climatological dataset EURADCLIM, can be found here: https://github.com/overeem11/EURADCLIM-tools. EURADCLIM is a dataset of 1-h and 24-h precipitation accumulations covering 78% of geographical Europe (https://doi.org/10.21944/7ypj-wn68 & https://doi.org/10.21944/1a54-gg96). The EURADCLIM file "RAD_OPERA_24H_RAINFALL_ACCUMULATION_201305311400.h5" contains 24-h accumulations for one interval and can be used for testing.
