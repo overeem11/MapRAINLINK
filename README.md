@@ -42,12 +42,13 @@ dataf <- unique(data.frame(cbind(DataOutlierFiltered$XStart[cond],DataOutlierFil
 
 write.table(dataf,"CMLLocations_SriLanka_RmeanAvailable_MinMax.dat",row.names=FALSE,col.names=TRUE,quote=FALSE)
 ```
+In this step the unique locations of CMLs are obtained based on those intervals and sub-links with (zero) path-averaged rainfall intensities. This is needed in the next step in order to determine whether the coordinate of a grid cell is close to a start or end point of a CML.
 
 5. Start R and run this script to obtain a grid which can be used for plotting with MapRAINLINK: 
 ``` 
 source("MakeInterpolationGridForPlottingSriLankaMinMax.R")
 ```
-This produces the file "InterpolationGrid_SriLanka_Plus_Indices.dat", which contains the indices for longitude and latitude, i.e., the column and row numbers of an array. Final output is the file "CMLInterpolationGridSriLanka.dat", which is the same interpolation grid as provided at https://doi.org/10.4121/14166539.v2. If "GridPlottingCML" is set to "yes", the last column in "CMLInterpolationGridSriLanka.dat" is set to 1 only if a grid cell is less than 0.05 degrees from the start and/or end coordinates of a CML. Otherwise, the last column is always set to 1. "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" only plots the interpolated CML rainfall for values of 1 in the last column. In case "GridPlottingCML" is not set to "yes", step 4 can be skipped.
+This produces the file "InterpolationGrid_SriLanka_Plus_Indices.dat", which contains the indices for longitude and latitude, i.e., the column and row numbers of an array. Final output is the file "CMLInterpolationGridSriLanka.dat", which is the same interpolation grid as provided at https://doi.org/10.4121/14166539.v2. If "GridPlottingCML" is set to "yes", the last column in "CMLInterpolationGridSriLanka.dat" is set to 1 only if a grid cell is less than 0.05 degrees from the start and/or end coordinates of a CML. Otherwise, the last column is always set to 1. "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" only plots the interpolated CML rainfall for values of 1 in the last column. In case "GridPlottingCML" is not set to "yes", step 4 can be skipped, and still an interpolation grid file is produced.
 
 6. Simply follow the above steps for deriving your own interpolation grids for interpolation with RAINLINK and/or visualization with MapRAINLINK.
 
