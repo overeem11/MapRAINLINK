@@ -28,7 +28,7 @@ A recipe to obtain an interpolation grid for RAINLINK and one for the plotting w
 source("MakeInterpolationGridSriLanka.R").
 ```
 3. The output "InterpolationGrid_SriLanka.dat" has to be used by RAINLINK to obtain interpolated rainfall maps (3.5 months of these rainfall maps can be obtained from https://doi.org/10.4121/14166539.v2). Since the CML data are not publicly available, this step cannot be reproduced.
-4. After running RAINLINK, store the following output of RAINLINK in the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat", by pasting this in the R shell (again this step cannot be reproduced and the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat" is not publicly available because of restrictions for the CML metadata):
+4. After running RAINLINK, store the following output of RAINLINK in the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat", by pasting this in the R shell (again this step cannot be reproduced and the file "CMLLocations_SriLanka_RmeanAvailable_MinMax.dat" is not publicly available because of restrictions to share the CML metadata):
 ```
 Rmean <- RainRetrievalMinMaxRSL(Aa=Aa,alpha=alpha,Data=DataOutlierFiltered,kRPowerLawDataH=kRPowerLawDataH,kRPowerLawDataV=kRPowerLawDataV,PmaxCor=Pcor$PmaxCor,PminCor=Pcor$PminCor,Pref=Pref)
 
