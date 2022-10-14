@@ -23,7 +23,7 @@ For other regions or interpolation grids, "PlotDataFieldRadarGrid" must be made 
 python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM_SriLanka.py
 ```
 <img src="SriLanka.jpg" alt="drawing" width="500"/>
-A recipe to obtain an interpolation grid for RAINLINK and one for the plotting with "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" for Sri Lanka is given below:
+The CML interpolated values are obtained from file "linkmap_201910171615_SriLanka.dat", which is "linkmap_201910171615.dat" in the publicly availabe dataset https://doi.org/10.4121/14166539.v2. A recipe to obtain an interpolation grid for RAINLINK and one for the plotting with "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" for Sri Lanka is given below:
 
 1. Start R and run this script to obtain the interpolation grid for Sri Lanka:
 ```
