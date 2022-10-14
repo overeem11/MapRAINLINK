@@ -10,7 +10,7 @@ Just clone this repository or simply copy all files to a local directory. With t
 ```
 python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py
 ```
-<img src="Netherlands.jpg" alt="drawing" width="200"/>
+<img src="Netherlands.jpg" alt="drawing" width="500"/>
 
 All the plotting options and input and output files need to be specified in the configuration file "ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py", although it is also possible to provide additional arguments on the command line, which will overrule the settings in the configuration file. When the Python script is ran using the default settings, a CML rainfall map for the Netherlands is visualized for one 15-min time interval, file "Netherlands.jpg". These values are output from RAINLINK and stored in file "linkmap_201109102045.dat". This file has been obtained by running RAINLINK with the 2-day sample dataset from RAINLINK for the Netherlands. These are interpolated values at the middle of the grid cells of the Dutch radar grid ("InterpolationGrid.dat" from https://github.com/overeem11/RAINLINK). In order to plot these, "PlotDataFieldRadarGrid" must be set to "yes" in the configuration file. First, the radar file "RAD_NL25_RAC_MFBS_24H_201805300800_NL.h5" is read, so that the polygons for the plotting can be constructed ("KNMIRadarInputFileName" in the configuration file), where the associated radar values are set to 0 in the Python script. The file "InterpolationGridRowColNrsRadarGrid.dat" ("FileNameRowColNumbersRadarGrid" in the configuration script) is read to obtain the column and row numbers of the radar grid for the CML grid cells. Next, these grid cells are filled with the interpolated CML rainfall values. 
 
