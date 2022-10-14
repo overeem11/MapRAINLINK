@@ -73,7 +73,7 @@ Next, a map of 15-min radar precipitation accumulations can be visualized:
 ```
 python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py "PlotDataField = 'no'" "PlotDataFieldRadarGrid = 'no'" "PlotKNMIRadar = 'yes'" "KNMIRadarInputFileName = 'RAD_NL25_RAC_MFBS_15min_201109102045_NL.h5'" "PlotCMLTimeInterval = 'no'" "TitlePlot = 'The Netherlands - Radar'" "OutputFileName = 'NetherlandsRadar.jpg'"
 ```
-<img src="Netherlands.jpg" alt="drawing" width="500"/>
+<img src="NetherlandsRadar.jpg" alt="drawing" width="500"/>
 
 # Visualizing OPERA radar data
 MapRAINLINK can also visualize gridded OPERA radar data in HDF5-ODIM format. Then the file "CoordinatesHDF5ODIMWGS84.dat" is needed. It contains the coordinates of the center of radar grid cells with longitude (first column) and latitude (second column) in degrees (WGS84). More tools for working with OPERA radar data, and the derived climatological dataset EURADCLIM, can be found here: https://github.com/overeem11/EURADCLIM-tools. EURADCLIM is a dataset of 1-h and 24-h precipitation accumulations covering 78% of geographical Europe (https://doi.org/10.21944/7ypj-wn68 & https://doi.org/10.21944/1a54-gg96). The EURADCLIM file "RAD_OPERA_24H_RAINFALL_ACCUMULATION_201305311400.h5" contains 24-h accumulations for one interval and can be used for testing.
