@@ -52,6 +52,11 @@ This produces the file "InterpolationGrid_SriLanka_Plus_Indices.dat", which cont
 
 6. Simply follow the above steps for deriving your own interpolation grids for interpolation with RAINLINK and/or visualization with MapRAINLINK.
 
+# Error message
+It seems that this error message is not a problem:
+
+UserWarning: The input coordinates to pcolormesh are interpreted as cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which case, please supply explicit cell edges to pcolormesh.
+
 # Open datasets to use with MapRAINLINK
 - Gridded rainfall maps retrieved from CML data from Sri Lanka over a 3.5 month period (https://doi.org/10.4121/14166539.v2).
 - The 2-day sample dataset, which is part of RAINLINK, or the ~4-month dataset covering the Netherlands (https://doi.org/10.4121/uuid:323587ea-82b7-4cff-b123-c660424345e5). These datasets need to be processed with RAINLINK to obtain CML path averages or rainfall fields.
