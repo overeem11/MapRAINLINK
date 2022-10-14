@@ -71,7 +71,7 @@ python AccumulateRadarHDF5KNMIListCount.py "RAD_NL25_RAC_MFBS_15min_201109102045
 ```
 Next, a map of 15-min radar precipitation accumulations can be visualized:
 ```
-python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py "PlotDataField = 'no'" "PlotDataFieldRadarGrid = 'no'" "PlotKNMIRadar = 'yes'" "KNMIRadarInputFileName = 'RAD_NL25_RAC_MFBS_15min_201109102045_NL.h5'" "PlotCMLTimeInterval = 'yes'" "TitlePlot = 'The Netherlands - Radar'" "OutputFileName = 'NetherlandsRadar.jpg'"
+python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py "PlotDataField = 'no'" "PlotDataFieldRadarGrid = 'no'" "PlotKNMIRadar = 'yes'" "KNMIRadarInputFileName = 'RAD_NL25_RAC_MFBS_15min_201109102045_NL.h5'" "PlotCMLTimeInterval = 'no'" "TitlePlot = 'The Netherlands - Radar'" "OutputFileName = 'NetherlandsRadar.jpg'"
 ```
 <img src="Netherlands.jpg" alt="drawing" width="500"/>
 
