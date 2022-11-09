@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Python script
 # Name: AccumulateRadarHDF5KNMIListCount.py
