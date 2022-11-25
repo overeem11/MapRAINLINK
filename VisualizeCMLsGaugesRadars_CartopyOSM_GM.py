@@ -400,8 +400,6 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
    if ScaleType!="YellowRed" and ScaleType!="CbF":
       levels = levels
       cmap = copy.copy(mpl.cm.get_cmap(ScaleType))
-      colorSetOver = "indigo"
-      colorSetUnder = "lightgray"
    if ScaleType=="YellowRed":
       levels = levels
       cmap = mpl.colors.ListedColormap(['#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026'])
