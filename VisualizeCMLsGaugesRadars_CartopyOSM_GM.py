@@ -355,7 +355,7 @@ if PlotCML=="yes" or PlotCMLTimeInterval=="yes":
 
 # Plot locations of rain gauges from network 1:
 if PlotGaugeNetwork1=="yes":
-   # Plot locations daily rain gauges as points:
+   # Plot locations rain gauges as points:
    if PlotValuesGaugesNetwork1=="no":
       plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, color=ColorGaugeNetwork1, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork1, facecolors="none", alpha=alphaPoint)
       if LabelGaugeNetwork=="yes":
@@ -437,17 +437,17 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
       CS3 
    except NameError:
       if PlotGaugeNetwork1=="yes" and PlotValuesGaugesNetwork1=="yes":
-         # Plot locations daily rain gauges as points:
+         # Plot locations rain gauges as points:
          CS3 = plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
       if PlotGaugeNetwork2=="yes" and PlotValuesGaugesNetwork2=="yes":
-         # Plot locations daily rain gauges as points:
+         # Plot locations rain gauges as points:
          CS3 = plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
    else:
       if PlotGaugeNetwork1=="yes" and PlotValuesGaugesNetwork1=="yes":
-         # Plot locations daily rain gauges as points:
+         # Plot locations rain gauges as points:
          plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
       if PlotGaugeNetwork2=="yes" and PlotValuesGaugesNetwork2=="yes":
-         # Plot locations daily rain gauges as points:
+         # Plot locations rain gauges as points:
          plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
    
 
