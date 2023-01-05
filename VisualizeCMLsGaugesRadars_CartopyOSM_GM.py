@@ -312,7 +312,7 @@ plt.rcParams["font.family"] = "serif"
 plt.rcParams.update({'font.size': FontSizeLegendLabel}) 
 plt.close('all')
 transform = ccrs.PlateCarree()
-fig = plt.figure(figsize=(8, 8))
+fig = plt.figure(figsize=(16, 8))
 
 
 # To use OpenStreetMap:
@@ -502,13 +502,21 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
       CS3.cmap.set_under(colorSetUnder, alpha=alpha)
       if ColorBar=="yes":
          # Plot color bar:
+         font = mpl.font_manager.FontProperties(size=FontSizeLegend)         
          cbar = plt.colorbar(pad=DistanceBetweenMapAndColorBar,shrink=SizeLegend,extend="both")
          cbar.set_label(LabelName)
+         text = ax.yaxis.label
+         text.set_font_properties(font)
+         cbar.ax.tick_params(labelsize=FontSizeLegend)         
    else:
       if ColorBar=="yes":
          # Plot color bar:
+         font = mpl.font_manager.FontProperties(size=FontSizeLegend)         
          cbar = plt.colorbar(pad=DistanceBetweenMapAndColorBar,shrink=SizeLegend,extend="max")
          cbar.set_label(LabelName)
+         text = ax.yaxis.label
+         text.set_font_properties(font)
+         cbar.ax.tick_params(labelsize=FontSizeLegend)         
 
 
 if TypeBackGroundMap=="NE":
