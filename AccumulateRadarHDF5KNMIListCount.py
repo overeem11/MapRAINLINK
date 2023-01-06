@@ -2,8 +2,26 @@
 # -*- coding: utf-8 -*-
 # Python script
 # Name: AccumulateRadarHDF5KNMIListCount.py
-# Author: Aart Overeem (KNMI)
-# Date: October 2022
+# Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
+#
+#
+## Version 1.01
+## Copyright (C) 2023 Aart Overeem
+##
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+#
 # Description: Script to accumulate KNMI HDF5 radar rainfall images where the file names are provided as input or to accumulate KNMI HDF5 radar rainfall images for a given path. 
 #              Read KNMI HDF5 radar file, extract rainfall depth, accumulate rainfall depth over provided input files.
 #              Output is a KNMI HDF5 radar file with the accumulated rainfall depth.
