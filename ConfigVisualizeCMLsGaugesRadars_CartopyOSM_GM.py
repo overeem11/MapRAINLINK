@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 # Python configuration script.
 # Name: ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py
+# Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.0
-## Copyright (C) 2022 Aart Overeem
+## Version 1.01
+## Copyright (C) 2023 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -33,7 +34,6 @@
 # address = {Exeter, Devon },
 # url = {https://scitools.org.uk/cartopy}
 # }
-
 
 
 #####################
