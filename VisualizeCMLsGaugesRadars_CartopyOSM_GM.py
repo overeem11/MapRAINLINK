@@ -4,8 +4,8 @@
 # Name: VisualizeCMLsGaugesRadars_CartopyOSM_GM.py
 #
 #
-## Version 1.0
-## Copyright (C) 2022 Aart Overeem
+## Version 1.01
+## Copyright (C) 2023 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
