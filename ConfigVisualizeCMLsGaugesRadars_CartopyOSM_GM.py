@@ -5,7 +5,7 @@
 # Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.01
+## Version 1.02
 ## Copyright (C) 2023 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
