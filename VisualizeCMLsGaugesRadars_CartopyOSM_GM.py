@@ -439,17 +439,17 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
    except NameError:
       if PlotGaugeNetwork1=="yes" and PlotValuesGaugesNetwork1=="yes":
          # Plot locations rain gauges as points:
-         CS3 = plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
+         CS3 = plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
       if PlotGaugeNetwork2=="yes" and PlotValuesGaugesNetwork2=="yes":
          # Plot locations rain gauges as points:
-         CS3 = plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
+         CS3 = plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
    else:
       if PlotGaugeNetwork1=="yes" and PlotValuesGaugesNetwork1=="yes":
          # Plot locations rain gauges as points:
-         plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
+         plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
       if PlotGaugeNetwork2=="yes" and PlotValuesGaugesNetwork2=="yes":
          # Plot locations rain gauges as points:
-         plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="none")
+         plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
    
 
    # Plot path-average values for commercial microwave links:
