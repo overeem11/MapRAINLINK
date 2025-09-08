@@ -5,8 +5,8 @@
 # Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.02
-## Copyright (C) 2023 Aart Overeem
+## Version 1.1
+## Copyright (C) 2025 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -60,6 +60,8 @@ import copy
 import h5py
 import pyproj
 import pandas as pd
+# Added this static backend (https://matplotlib.org/stable/users/explain/figure/backends.html#static-backends) to avoid that command line is possibly not cleared after running this script in command line in remote sessions:
+mpl.use('Cairo')
 
 
 # Loading Python configuration script with parameter settings:
@@ -181,10 +183,10 @@ if PlotKNMIRadar=="yes" or PlotDataFieldRadarGrid=="yes":
    FILE_NAME = KNMIRadarInputFileName
    f = h5py.File(FILE_NAME, mode='r')
    # Read metadata:    
-   xscale = f['/geographic'].attrs['geo_pixel_size_x']
-   yscale = f['/geographic'].attrs['geo_pixel_size_y']
-   xoffset = f['/geographic'].attrs['geo_column_offset']
-   yoffset = f['/geographic'].attrs['geo_row_offset']
+   xscale = f['/geographic'].attrs['geo_pixel_size_x'][0]
+   yscale = f['/geographic'].attrs['geo_pixel_size_y'][0]
+   xoffset = f['/geographic'].attrs['geo_column_offset'][0]
+   yoffset = f['/geographic'].attrs['geo_row_offset'][0]
    proj4str = f['/geographic/map_projection'].attrs['projection_proj4_params']
    Ncols = f['/geographic'].attrs['geo_number_columns']
    Nrows = f['/geographic'].attrs['geo_number_rows']
@@ -223,14 +225,14 @@ if PlotKNMIRadar=="yes" or PlotDataFieldRadarGrid=="yes":
          Xref = int((i+xoffset)*xscale)
          Yref = int((j+yoffset)*yscale)
          LonArray[j][i], LatArray[j][i] = p(Xref,Yref,inverse=True)
-         RArrayCML[j][i] = 0.0
+         # Start with a rainfall field filled with nans:
+         RArrayCML[j][i] = np.nan
          # The dimensions of X and Y should be one greater than those of C. 
 
 
    if PlotDataFieldRadarGrid=="yes":
       # Import row and column numbers of interpolation grid, i.e., connected to the Dutch radar grid:
       RowNr, ColNr = loadtxt(FileNameRowColNumbersRadarGrid, comments="#", delimiter=",", usecols=(0, 1), unpack=True, dtype ='int')
-      # Start with a rainfall field filled with zeroes:   
       RArray = np.array(RArrayCML)
       # Fill array with CML rainfall field values for row and column numbers provided in "FileNameRowColNumbersRadarGrid":
       for k in range(0,RowNr.shape[0]):
@@ -309,7 +311,7 @@ if PlotOPERARadar=="yes":
 ##################
 
 # Map settings (e.g. projection and extent of area):
-plt.rcParams["font.family"] = "serif"
+plt.rcParams["font.family"] = "sans-serif"
 plt.rcParams.update({'font.size': FontSizeLegendLabel}) 
 plt.close('all')
 transform = ccrs.PlateCarree()
@@ -358,10 +360,10 @@ if PlotCML=="yes" or PlotCMLTimeInterval=="yes":
 if PlotGaugeNetwork1=="yes":
    # Plot locations rain gauges as points:
    if PlotValuesGaugesNetwork1=="no":
-      plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, color=ColorGaugeNetwork1, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork1, facecolors="none", alpha=alphaPoint)
+      plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, color=ColorGaugeNetwork1, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork1, alpha=alphaPoint)
       if LabelGaugeNetwork=="yes":
          # Plot legend:
-         plt.scatter(LongitudeLabelGaugesNetwork1, LatitudeLabelGaugesNetwork1, s=SizeMarkerGaugesNetwork1, color=ColorGaugeNetwork1, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork1, facecolors="none", alpha=alphaPoint)
+         plt.scatter(LongitudeLabelGaugesNetwork1, LatitudeLabelGaugesNetwork1, s=SizeMarkerGaugesNetwork1, color=ColorGaugeNetwork1, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork1, alpha=alphaPoint)
          plt.text(LongitudeLabelGaugesNetwork1+LongitudeOffsetLabelNameAndNamesGaugesNetwork1, LatitudeLabelGaugesNetwork1+LatitudeOffsetLabelNameAndNamesGaugesNetwork1, LabelNameGaugesNetwork1, fontsize=FontSizeLabelNameGaugesNetwork1, transform=transform, color=ColorLabelNameGaugesNetwork1)
    if NamesGaugeNetwork=="yes":
       for i, label in enumerate(station_nameNetwork1):
@@ -372,10 +374,10 @@ if PlotGaugeNetwork1=="yes":
 if PlotGaugeNetwork2=="yes":
    # Plot location hourly rain gauges as points:
    if PlotValuesGaugesNetwork2=="no":
-      plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, color=ColorGaugeNetwork2, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork2, facecolors="none", alpha=alphaPoint)
+      plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, color=ColorGaugeNetwork2, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork2, alpha=alphaPoint)
       if LabelGaugeNetwork=="yes":
          # Plot legend:
-         plt.scatter(LongitudeLabelGaugesNetwork2, LatitudeLabelGaugesNetwork2, s=SizeMarkerGaugesNetwork2, color=ColorGaugeNetwork2, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork2, facecolors="none", alpha=alphaPoint)
+         plt.scatter(LongitudeLabelGaugesNetwork2, LatitudeLabelGaugesNetwork2, s=SizeMarkerGaugesNetwork2, color=ColorGaugeNetwork2, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork2, alpha=alphaPoint)
          plt.text(LongitudeLabelGaugesNetwork2+LongitudeOffsetLabelNameAndNamesGaugesNetwork2, LatitudeLabelGaugesNetwork2+LatitudeOffsetLabelNameAndNamesGaugesNetwork2, LabelNameGaugesNetwork2, fontsize=FontSizeLabelNameGaugesNetwork2, transform=transform, color=ColorLabelNameGaugesNetwork2)
    if NamesGaugeNetwork=="yes":
       for i, label in enumerate(station_nameNetwork2):
@@ -385,10 +387,10 @@ if PlotGaugeNetwork2=="yes":
 # Plot locations of rain gauges from network 3:
 if PlotGaugeNetwork3=="yes":
    # Plot location hourly rain gauges as points:
-   plt.scatter(lon_gaugesNetwork3, lat_gaugesNetwork3, s=SizeMarkerGaugesNetwork3, color=ColorGaugeNetwork3, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork3, facecolors="none", alpha=alphaPoint)
+   plt.scatter(lon_gaugesNetwork3, lat_gaugesNetwork3, s=SizeMarkerGaugesNetwork3, color=ColorGaugeNetwork3, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork3, alpha=alphaPoint)
    if LabelGaugeNetwork=="yes":
       # Plot legend:
-      plt.scatter(LongitudeLabelGaugesNetwork3, LatitudeLabelGaugesNetwork3, s=SizeMarkerGaugesNetwork3, color=ColorGaugeNetwork3, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork3, facecolors="none", alpha=alphaPoint)
+      plt.scatter(LongitudeLabelGaugesNetwork3, LatitudeLabelGaugesNetwork3, s=SizeMarkerGaugesNetwork3, color=ColorGaugeNetwork3, zorder=zorderPoint, transform=transform, marker=MarkerGaugeNetwork3, alpha=alphaPoint)
       plt.text(LongitudeLabelGaugesNetwork3+LongitudeOffsetLabelNameAndNamesGaugesNetwork3, LatitudeLabelGaugesNetwork3+LatitudeOffsetLabelNameAndNamesGaugesNetwork3, LabelNameGaugesNetwork3, fontsize=FontSizeLabelNameGaugesNetwork3, transform=transform, color=ColorLabelNameGaugesNetwork3)
    if NamesGaugeNetwork=="yes":
       for i, label in enumerate(station_nameNetwork3):
@@ -400,7 +402,7 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
    # Obtain color scale:
    if ScaleType!="YellowRed" and ScaleType!="CbF":
       levels = levels
-      cmap = copy.copy(mpl.cm.get_cmap(ScaleType))
+      cmap = mpl.colormaps.get_cmap(ScaleType)
    if ScaleType=="YellowRed":
       levels = levels
       cmap = mpl.colors.ListedColormap(['#ffffb2','#fed976','#feb24c','#fd8d3c','#f03b20','#bd0026'])
@@ -513,7 +515,7 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
       if ColorBar=="yes":
          # Plot color bar:
          font = mpl.font_manager.FontProperties(size=FontSizeLegend)         
-         cbar = plt.colorbar(pad=DistanceBetweenMapAndColorBar,shrink=SizeLegend,extend="max")
+         cbar = plt.colorbar(pad=DistanceBetweenMapAndColorBar,shrink=SizeLegend)
          cbar.set_label(LabelName)
          text = ax.yaxis.label
          text.set_font_properties(font)
@@ -536,7 +538,7 @@ if TypeBackGroundMap=="NE":
    if DrawLakelines=="yes":
       ax.add_feature(cartopy.feature.LAKES, edgecolor="black", linewidth=0.3, facecolor="none",zorder=2)
 
-  
+ 
 # Draw parallels & meridians: 
 if DrawParallelsMeridians=="yes":
     if PlotParallelsMeridiansInFront=="yes":

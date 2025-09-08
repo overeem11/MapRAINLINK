@@ -12,12 +12,12 @@ python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadar
 ```
 <img src="Netherlands.jpg" alt="drawing" width="500"/>
 
-Map made with Natural Earth. Free vector and raster map data copyright naturalearthdata.com. Note that this reproduces Figure 5 (left) from https://doi.org/10.5194/amt-9-2425-2016 (but that was obtained with a different plotting package and different colors and classes).
+Map made with Natural Earth. Free vector and raster map data &copy naturalearthdata.com. Note that this reproduces Figure 5 (left) from https://doi.org/10.5194/amt-9-2425-2016 (but that was obtained with a different plotting package and different colors and classes).
 
 # Detailed explanation of plotting
 All the plotting options and input and output files need to be specified in the configuration script "ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM.py", although it is also possible to provide additional arguments on the command line, which will overrule the settings in the configuration script. These interpolated CML values from the above example are output from RAINLINK and are stored in file "linkmap_201109102045.dat". This file has been obtained by running RAINLINK with the built-in 2-day sample dataset. These are interpolated values at the middle of the grid cells of the Dutch radar grid ("InterpolationGrid.dat" from https://github.com/overeem11/RAINLINK). In order to plot these, "PlotDataFieldRadarGrid" must be set to "yes" in the configuration script. First, the radar file "RAD_NL25_RAC_MFBS_24H_201805300800_NL.h5" is read, so that the polygons for the plotting can be constructed ("KNMIRadarInputFileName" in the configuration script), where the associated radar values are set to 0 in the Python script. The file "InterpolationGridRowColNrsRadarGrid.dat" ("FileNameRowColNumbersRadarGrid" in the configuration script) is read to obtain the column and row numbers of the radar grid for the CML grid cells. Next, these grid cells are filled with the interpolated CML rainfall values. 
 
-In case path-average rainfall needs to be visualized, the RAINLINK output from file  "linkdata_201109102045.dat" is used, and "PlotCMLTimeInterval" and "PlotValuesCMLPathAverage" must be set to "yes" in the configuration script. "PlotDataField" may be set not equal to "yes" to avoid that the CML rainfall field and CML path averages are plotted together. The file "StationMetadataNetwork1.dat" contains locations of the two C-band ground-based weather radars in the Netherlands. These locations can be visualized by setting "PlotGaugeNetwork1" to "yes" in the configuration script. If also "PlotValuesGaugesNetwork1" is set to "yes", the associated rainfall values are visualized (this is meant as an illustration of plotting rainfall values for gauge locations, the radar itself obviously does not observe point values). More information on usage is provided in the configuration and visualization scripts. 
+In case path-average rainfall needs to be visualized, the RAINLINK output from file "linkdata_201109102045.dat" is used, and "PlotCMLTimeInterval" and "PlotValuesCMLPathAverage" must be set to "yes" in the configuration script. "PlotDataField" may be set not equal to "yes" to avoid that the CML rainfall field and CML path averages are plotted together. The file "StationMetadataNetwork1.dat" contains locations of the two C-band ground-based weather radars in the Netherlands. These locations can be visualized by setting "PlotGaugeNetwork1" to "yes" in the configuration script. If also "PlotValuesGaugesNetwork1" is set to "yes", the associated rainfall values are visualized (this is meant as an illustration of plotting rainfall values for gauge locations, the radar itself obviously does not observe point values). More information on usage is provided in the configuration and visualization scripts. Note that the first line in a file with locations (e.g., from CMLs, radars, or rain gauges) is not used, because it is assumed that the first line contains the header with variable names. Also note that lines with # at the beginning are skipped (so make sure that the first line does not contain #; this is automatically the case for RAINLINK output with CML locations).
 
 # Plotting for other regions or interpolation grids
 For other regions or interpolation grids, "PlotDataFieldRadarGrid" must be made not equal to "yes", and a grid with "fixed changes in degrees", e.g. a 0.02 degree grid in latitude and longitude, must be used (defined by "InterpolationGrid" in the configuration script). Such an interpolation grid can be constructed by following the recipe below, and must be used with RAINLINK to obtain the interpolated data at this grid. Next, it can be used to visualize CML rainfall maps. Here, an example is provided for Sri Lanka, which reproduces Figure 5(e) from https://doi.org/10.1088/1748-9326/ac0fa6 (but that was obtained with a different plotting package), the map "SriLanka.jpg":
@@ -25,7 +25,7 @@ For other regions or interpolation grids, "PlotDataFieldRadarGrid" must be made 
 python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadars_CartopyOSM_GM_SriLanka.py
 ```
 <img src="SriLanka.jpg" alt="drawing" width="500"/>
-&copy OpenStreetMap contributors 2022. Distributed under the Open Data Commons Open Database License (ODbL) v1.0. The CML interpolated values are obtained from file "linkmap_201910171615_SriLanka.dat", which is "linkmap_201910171615.dat" in the publicly availabe dataset https://doi.org/10.4121/14166539.v2. A recipe to obtain an interpolation grid for RAINLINK and one for the plotting with "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" for Sri Lanka is given below:
+&copy OpenStreetMap contributors 2025. Distributed under the Open Data Commons Open Database License (ODbL) v1.0. The CML interpolated values are obtained from file "linkmap_201910171615_SriLanka.dat", which is "linkmap_201910171615.dat" in the publicly availabe dataset https://doi.org/10.4121/14166539.v2. A recipe to obtain an interpolation grid for RAINLINK and one for the plotting with "VisualizeCMLsGaugesRadars_CartopyOSM_GM.py" for Sri Lanka is given below:
 
 1. Start R and run this script to obtain the interpolation grid for Sri Lanka:
 ```
@@ -54,8 +54,8 @@ This produces the file "InterpolationGrid_SriLanka_Plus_Indices.dat", which cont
 
 6. Simply follow the above steps for deriving your own interpolation grids for interpolation with RAINLINK and/or visualization with MapRAINLINK.
 
-# Error message
-It seems that this error message is not a problem:
+# Warning message
+It seems that this warning message is not a problem:
 
 "UserWarning: The input coordinates to pcolormesh are interpreted as cell centers, but are not monotonically increasing or decreasing. This may lead to incorrectly calculated cell edges, in which case, please supply explicit cell edges to pcolormesh."
 
@@ -77,12 +77,10 @@ python VisualizeCMLsGaugesRadars_CartopyOSM_GM.py ConfigVisualizeCMLsGaugesRadar
 ```
 <img src="NetherlandsRadar.jpg" alt="drawing" width="500"/>
 
-Map made with Natural Earth. Free vector and raster map data copyright naturalearthdata.com. Note that this reproduces Figure 5 (right) from https://doi.org/10.5194/amt-9-2425-2016 (but that was obtained with a different plotting package and different colors and classes). This map can be compared with the CML-based rainfall map given above for the same time interval.
+Map made with Natural Earth. Free vector and raster map data &copy naturalearthdata.com. Note that this reproduces Figure 5 (right) from https://doi.org/10.5194/amt-9-2425-2016 (but that was obtained with a different plotting package and different colors and classes). This map can be compared with the CML-based rainfall map given above for the same time interval.
 
 # Visualizing OPERA radar data
-MapRAINLINK can also visualize gridded OPERA radar data in HDF5-ODIM format. Then the file "CoordinatesHDF5ODIMWGS84.dat" is needed. It contains the coordinates of the center of radar grid cells with longitude (first column) and latitude (second column) in degrees (WGS84). More tools for working with OPERA radar data, and the derived climatological dataset EURADCLIM, can be found here: https://github.com/overeem11/EURADCLIM-tools. EURADCLIM is a dataset of 1-h and 24-h precipitation accumulations covering 78% of geographical Europe (https://doi.org/10.21944/7ypj-wn68 & https://doi.org/10.21944/1a54-gg96). The accompanying scientific article can be found here: https://doi.org/10.5194/essd-15-1441-2023. The EURADCLIM file "RAD_OPERA_24H_RAINFALL_ACCUMULATION_201305311400.h5" contains 24-h accumulations for one interval and can be used for testing.
+MapRAINLINK can also visualize gridded OPERA radar data in HDF5-ODIM format. Then the file "CoordinatesHDF5ODIMWGS84.dat" is needed. It contains the coordinates of the center of radar grid cells with longitude (first column) and latitude (second column) in degrees (WGS84). More tools for working with OPERA radar data, and the derived climatological dataset EURADCLIM, can be found here: https://github.com/overeem11/EURADCLIM-tools. EURADCLIM is a dataset of 1-h and 24-h precipitation accumulations covering 78% of geographical Europe (https://doi.org/10.21944/ymrk-mr24 & https://doi.org/10.21944/kcd7-3y59; version 2 of the dataset). The accompanying scientific article can be found here: https://doi.org/10.5194/essd-15-1441-2023 (version 1 of the dataset). The EURADCLIM file "RAD_OPERA_24H_RAINFALL_ACCUMULATION_201305311400.h5" contains 24-h accumulations for one interval and can be used for testing.
 
 # Reference
-When referring to MapRAINLINK, please use:
-
-Aart Overeem. (2023). MapRAINLINK (v1.02). Zenodo. https://doi.org/10.5281/zenodo.7611398
+When referring to MapRAINLINK, please check Zenodo and use the citation with doi to the current version (on https://doi.org/10.5281/zenodo.7611398 you can search for the newest version).

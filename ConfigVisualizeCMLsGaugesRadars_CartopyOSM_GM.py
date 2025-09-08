@@ -5,8 +5,8 @@
 # Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.02
-## Copyright (C) 2023 Aart Overeem
+## Version 1.1
+## Copyright (C) 2025 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -81,7 +81,7 @@ if Projection=="yes" and TypeBackGroundMap=="NE":
 
 
 # 2.2 Output filename (map).
-OutputFileName = "Netherlands.jpg"		# Name of output file with map. Can at least be "jpg" or "pdf".
+OutputFileName = "Netherlands.jpg"		# Name of output file with map. Can at least be "jpg", "pdf" or "png", which automatically chooses the file format.
 
 
 # 2.3 Miscellaneous settings.
@@ -345,7 +345,7 @@ ConversionFactorKNMIRadar = 1			# Conversion factor in case rainfall accumulatio
                                                 # Note that the KNMI precipitation radar data provide accumulations in millimeters.
 DATAFIELD_NAME = "/image1/image_data"           # Path of radar image to be plotted.
 DATAFIELD_NAMECAL = "/image1/calibration"       # Location of metadata to convert precipitation to millimeters and to obtain "nodata" & "undetect" values.
-KNMIRadarInputFileName = "RAD_NL25_RAC_MFBS_24H_201805300800_NL.h5"	# Filename of file with interpolated rainfall map data.
+KNMIRadarInputFileName = "RAD_NL25_RAC_MFBS_24H_201805300800_NL.h5"	# Filename of file with gridded radar rainfall data.
 
 
 
@@ -368,7 +368,7 @@ ConversionFactorOPERARadar = 1			# Conversion factor in case rainfall accumulati
                                                 # Note that the OPERA precipitation radar data provide accumulations in millimeters in case of hourly accumulations or the 1-h and 24-h
                                                 # EURADCLIM datasets, but OPERA also provides a product of instantaneous surface rainfall intensities.
 DatasetNr = "/dataset1"           		# Path of radar image to be plotted. 
-OPERARadarInputFileName = "RAD_OPERA_24H_RAINFALL_ACCUMULATION_201305311400.h5"	# Filename of file with interpolated rainfall map data.
+OPERARadarInputFileName = "RAD_OPERA_24H_RAINFALL_ACCUMULATION_201305311400.h5"	# Filename of file with gridded radar rainfall data.
 
 
 
