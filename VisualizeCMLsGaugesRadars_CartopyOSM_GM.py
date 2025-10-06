@@ -5,7 +5,7 @@
 # Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.1
+## Version 1.11
 ## Copyright (C) 2025 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
@@ -311,7 +311,7 @@ if PlotOPERARadar=="yes":
 ##################
 
 # Map settings (e.g. projection and extent of area):
-plt.rcParams["font.family"] = "sans-serif"
+plt.rcParams["font.family"] = "serif"
 plt.rcParams.update({'font.size': FontSizeLegendLabel}) 
 plt.close('all')
 transform = ccrs.PlateCarree()
@@ -532,11 +532,11 @@ if TypeBackGroundMap=="NE":
    if DrawProvinces=="yes":
       ax.add_feature(cartopy.feature.STATES.with_scale("10m"), linewidth=0.3, zorder=2, edgecolor="gray")
    if DrawCountries=="yes":    
-      ax.add_feature(cartopy.feature.BORDERS, linestyle="-", linewidth=0.3, zorder=2)
+      ax.add_feature(cartopy.feature.BORDERS, linestyle="-", linewidth=LineWidthCoastLinesCountriesLakeLines, zorder=2, color=ColorCoastLinesCountriesLakeLines)
    if DrawCoastlines=="yes":
-       ax.coastlines(resolution="10m", linewidth=0.3, zorder=2)
+       ax.coastlines(resolution="10m", linewidth=LineWidthCoastLinesCountriesLakeLines, zorder=2, color=ColorCoastLinesCountriesLakeLines)
    if DrawLakelines=="yes":
-      ax.add_feature(cartopy.feature.LAKES, edgecolor="black", linewidth=0.3, facecolor="none",zorder=2)
+      ax.add_feature(cartopy.feature.LAKES, edgecolor=ColorCoastLinesCountriesLakeLines, linewidth=LineWidthCoastLinesCountriesLakeLines, facecolor="none",zorder=2)
 
  
 # Draw parallels & meridians: 

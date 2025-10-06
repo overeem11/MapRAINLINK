@@ -5,7 +5,7 @@
 # Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.1
+## Version 1.11
 ## Copyright (C) 2025 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
@@ -60,6 +60,8 @@ ColorOceanRiverLakes = "lightblue"      	# Color of oceans, seas, rivers and lak
 DrawCoastlines = "yes"    			# "yes" for drawing coastlines. Note that coastlines and country borders seem less accurate compared to OpenStreetMap and GoogleMap.
 DrawCountries = "yes"	  			# "yes" for drawing country borders.
 DrawLakelines = "yes"     			# "yes" for drawing lake lines.
+LineWidthCoastLinesCountriesLakeLines = 0.3     # 0.3 works wel for European scale, 1.2 works well for northwestern Europe scale.
+ColorCoastLinesCountriesLakeLines = "black"     # "black" can work well for European scale, "dimgray" can work well for northwestern Europe scale.
 DrawProvinces = "no"     			# "yes" for drawing borders of departments/provinces. 
 DrawRivers = "no"        			# "yes" for drawing rivers.
 Projection = "yes"                               # "yes" to use projection with EPSG code given below:
