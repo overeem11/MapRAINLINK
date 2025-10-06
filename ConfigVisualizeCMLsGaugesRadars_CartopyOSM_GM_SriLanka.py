@@ -5,7 +5,7 @@
 # Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.11
+## Version 1.12
 ## Copyright (C) 2025 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
@@ -57,16 +57,17 @@ ValueRequest = 9
 # 1.4 Map options for Natural Earth background map.
 ColorLand = "lightgrey"                  	# Color of land surface.
 ColorOceanRiverLakes = "lightblue"      	# Color of oceans, seas, rivers and lakes.
-DrawCoastlines = "yes"    			# "yes" for drawing coastlines. Note that coastlines and country borders seem less accurate compared to OpenStreetMap and GoogleMap.
-DrawCountries = "yes"	  			# "yes" for drawing country borders.
-DrawLakelines = "yes"     			# "yes" for drawing lake lines.
-LineWidthCoastLinesCountriesLakeLines = 0.3     # 0.3 works wel for European scale, 1.2 works well for northwestern Europe scale.
-ColorCoastLinesCountriesLakeLines = "black"     # "black" can work well for European scale, "dimgray" can work well for northwestern Europe scale.
 DrawProvinces = "no"     			# "yes" for drawing borders of departments/provinces. 
 DrawRivers = "no"        			# "yes" for drawing rivers.
 Projection = "yes"                               # "yes" to use projection with EPSG code given below:
 projection = ccrs.epsg(3035)     		# epsg:3035 = ETRS89 / ETRS-LAEA (suited for Europe). See https://epsg.io/ for EPSG codes per region.
 
+# 1.5 Map options for all background maps (note that borders can deviate a bit from the OpenStreetMap or GoogleMaps borders).
+DrawCoastlines = "no"    			# "yes" for drawing coastlines. Note that coastlines and country borders seem less accurate compared to OpenStreetMap and GoogleMap.
+DrawCountries = "no"	  			# "yes" for drawing country borders.
+DrawLakelines = "no"     			# "yes" for drawing lake lines.
+LineWidthCoastLinesCountriesLakeLines = 0.3     # 0.3 works wel for European scale, 1.2 works well for northwestern Europe scale.
+ColorCoastLinesCountriesLakeLines = "dimgray"     # "black" can work well for European scale, "dimgray" can work well for northwestern Europe scale.
 
 
 
@@ -300,6 +301,7 @@ MarkerGaugeNetwork3 = "o"			# Symbol for marker of gauge network 3. Note that no
 SizeMarkerGaugesNetwork1 = 100				# Size of marker of gauge network 1.
 SizeMarkerGaugesNetwork2 = 100				# Size of marker of gauge network 2.
 SizeMarkerGaugesNetwork3 = 100				# Size of marker of gauge network 3.
+LineWidthMarkerGauges = 0.1                             # Line width of point values (line width of outer circle in case of a circle/dot).
 
 
 # 6.4 Settings for label name of markers and for plotting (abbreviated) names/IDs near markers.

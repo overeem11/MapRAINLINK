@@ -5,7 +5,7 @@
 # Part of MapRAINLINK: https://github.com/overeem11/MapRAINLINK
 #
 #
-## Version 1.11
+## Version 1.12
 ## Copyright (C) 2025 Aart Overeem
 ##
 ## This program is free software: you can redistribute it and/or modify
@@ -441,17 +441,17 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
    except NameError:
       if PlotGaugeNetwork1=="yes" and PlotValuesGaugesNetwork1=="yes":
          # Plot locations rain gauges as points:
-         CS3 = plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
+         CS3 = plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black", linewidth=LineWidthMarkerGauges)
       if PlotGaugeNetwork2=="yes" and PlotValuesGaugesNetwork2=="yes":
          # Plot locations rain gauges as points:
-         CS3 = plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
+         CS3 = plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black", linewidth=LineWidthMarkerGauges)
    else:
       if PlotGaugeNetwork1=="yes" and PlotValuesGaugesNetwork1=="yes":
          # Plot locations rain gauges as points:
-         plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
+         plt.scatter(lon_gaugesNetwork1, lat_gaugesNetwork1, s=SizeMarkerGaugesNetwork1, c=GaugeValues1, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black", linewidth=LineWidthMarkerGauges)
       if PlotGaugeNetwork2=="yes" and PlotValuesGaugesNetwork2=="yes":
          # Plot locations rain gauges as points:
-         plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black")
+         plt.scatter(lon_gaugesNetwork2, lat_gaugesNetwork2, s=SizeMarkerGaugesNetwork2, c=GaugeValues2, cmap=cmap, zorder=zorderPoint, transform=transform, alpha=alpha, norm=norm, facecolors="none", edgecolors="black", linewidth=LineWidthMarkerGauges)
    
 
    # Plot path-average values for commercial microwave links:
@@ -523,7 +523,7 @@ if PlotDataField=="yes" or PlotValuesGaugesNetwork1=="yes" or PlotValuesGaugesNe
 
 
 if TypeBackGroundMap=="NE":
-   # Add natural earth features and borders in case of Natural Earth map:
+   # Add natural earth features and province borders in case of Natural Earth map:
    ax.add_feature(cartopy.feature.LAND, facecolor=ColorLand)
    ax.add_feature(cartopy.feature.OCEAN, facecolor=ColorOceanRiverLakes)
    ax.add_feature(cartopy.feature.LAKES, facecolor=ColorOceanRiverLakes, linewidth=0.00001,zorder=1)
@@ -531,12 +531,15 @@ if TypeBackGroundMap=="NE":
       ax.add_feature(cartopy.feature.RIVERS, edgecolor=ColorOceanRiverLakes, linewidth=1.2, zorder=2)
    if DrawProvinces=="yes":
       ax.add_feature(cartopy.feature.STATES.with_scale("10m"), linewidth=0.3, zorder=2, edgecolor="gray")
-   if DrawCountries=="yes":    
-      ax.add_feature(cartopy.feature.BORDERS, linestyle="-", linewidth=LineWidthCoastLinesCountriesLakeLines, zorder=2, color=ColorCoastLinesCountriesLakeLines)
-   if DrawCoastlines=="yes":
-       ax.coastlines(resolution="10m", linewidth=LineWidthCoastLinesCountriesLakeLines, zorder=2, color=ColorCoastLinesCountriesLakeLines)
-   if DrawLakelines=="yes":
-      ax.add_feature(cartopy.feature.LAKES, edgecolor=ColorCoastLinesCountriesLakeLines, linewidth=LineWidthCoastLinesCountriesLakeLines, facecolor="none",zorder=2)
+
+
+# Add borders (note that this can deviate a bit from the OpenStreetMap or GoogleMaps borders):
+if DrawCountries=="yes":    
+   ax.add_feature(cartopy.feature.BORDERS, linestyle="-", linewidth=LineWidthCoastLinesCountriesLakeLines, zorder=2, color=ColorCoastLinesCountriesLakeLines)
+if DrawCoastlines=="yes":
+    ax.coastlines(resolution="10m", linewidth=LineWidthCoastLinesCountriesLakeLines, zorder=2, color=ColorCoastLinesCountriesLakeLines)
+if DrawLakelines=="yes":
+   ax.add_feature(cartopy.feature.LAKES, edgecolor=ColorCoastLinesCountriesLakeLines, linewidth=LineWidthCoastLinesCountriesLakeLines, facecolor="none",zorder=2)
 
  
 # Draw parallels & meridians: 
